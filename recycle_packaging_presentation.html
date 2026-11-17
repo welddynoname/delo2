@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recycle Packaging — Web Presentation</title>
+<style>
+:root{--green:#1d8b62;--dark:#12372b;--mint:#e8f5ee;--cream:#f8fbf7;--ink:#18352b}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#0d241c;color:var(--ink);overflow:hidden}
+.deck{height:100dvh;display:grid;place-items:center;padding:18px}
+.slide{display:none;width:min(1100px,100%);height:min(690px,calc(100dvh - 105px));background:var(--cream);border-radius:24px;overflow:hidden;box-shadow:0 24px 80px #0005;position:relative}
+.slide.active{display:flex;animation:appear .35s ease}@keyframes appear{from{opacity:.3;transform:translateY(8px)}to{opacity:1;transform:none}}
+.content{padding:clamp(24px,5vw,64px);width:100%;display:flex;flex-direction:column;justify-content:center}
+.kicker{color:var(--green);font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+h1{font-size:clamp(42px,7vw,78px);line-height:.98;margin:18px 0;color:var(--dark);letter-spacing:-3px}
+h2{font-size:clamp(30px,4vw,48px);line-height:1.05;margin:12px 0 24px;color:var(--dark);letter-spacing:-1.5px}
+p{font-size:clamp(17px,2vw,21px);line-height:1.55;color:#496258;max-width:720px}
+.hero{background:linear-gradient(125deg,#e8f5ee 0%,#f8fbf7 58%,#d2eadb 100%)}
+.hero .content{max-width:760px}
+.hero-art{position:absolute;right:4%;bottom:5%;font-size:clamp(110px,20vw,220px);filter:drop-shadow(0 18px 14px #16442b20)}
+.pill{display:inline-flex;background:#d8eee1;color:#176044;padding:9px 15px;border-radius:99px;font-weight:700;margin-top:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.tile{background:white;border:1px solid #e1eee5;border-radius:18px;padding:20px;min-height:145px}
+.tile .emoji{font-size:35px}.tile h3{margin:8px 0 6px;color:var(--dark);font-size:21px}.tile p{font-size:15px;margin:0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.big-icon{font-size:clamp(100px,18vw,190px);text-align:center;background:var(--mint);border-radius:24px;padding:30px}
+ul{padding-left:22px;color:#496258;font-size:18px;line-height:1.8}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px}
+.step{background:#fff;border-radius:16px;padding:18px 12px;text-align:center;border:1px solid #e1eee5}
+.step b{display:block;color:var(--green);font-size:27px;margin-bottom:8px}.step span{font-size:15px;color:#496258}
+.callout{background:var(--dark);color:white;border-radius:20px;padding:25px;margin-top:18px;font-size:20px;line-height:1.5}
+.callout strong{color:#9fe2b8}
+.footer{position:absolute;bottom:18px;left:clamp(24px,5vw,64px);right:clamp(24px,5vw,64px);display:flex;justify-content:space-between;color:#8aa398;font-size:12px}
+.controls{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:12px;background:#18372c;padding:8px 12px;border-radius:99px;color:white;box-shadow:0 8px 25px #0005}
+button{border:0;background:#2d8c65;color:white;padding:10px 17px;border-radius:99px;font-weight:700;cursor:pointer;font-size:14px}
+button:disabled{opacity:.35;cursor:not-allowed}.counter{min-width:48px;text-align:center;font-size:13px}
+.progress{position:fixed;top:0;left:0;height:4px;background:#2d8c65;transition:width .25s}
+.quiz-option{display:block;width:100%;text-align:left;margin:9px 0;background:white;color:var(--ink);border:1px solid #dcebe1;padding:13px 16px;border-radius:12px}
+.quiz-option.selected{border:2px solid var(--green);background:#e8f5ee}
+#feedback{font-weight:700;margin-top:10px;color:var(--green)}
+@media(max-width:650px){.deck{padding:9px}.slide{height:calc(100dvh - 88px);border-radius:17px}.grid{grid-template-columns:1fr 1fr;gap:9px}.tile{padding:13px;min-height:125px}.tile h3{font-size:17px}.tile p{font-size:13px}.split{grid-template-columns:1fr;gap:12px}.big-icon{font-size:75px;padding:10px}.steps{grid-template-columns:1fr 1fr;gap:8px}.step{padding:12px 8px}.step span{font-size:13px}ul{font-size:16px}.footer{bottom:12px}}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<main class="deck">
+<section class="slide hero active">
+ <div class="content"><div class="kicker">Environmental project</div><h1>Recycle<br>Packaging</h1><p>Small everyday choices can make a big difference. Let's discover what packaging we can recycle and how to do it correctly.</p><span class="pill">Reduce · Reuse · Recycle</span></div>
+ <div class="hero-art">♻️</div><div class="footer"><span>WEB PRESENTATION</span><span>01 / 08</span></div>
+</section>
+<section class="slide">
+ <div class="content"><div class="kicker">01 — Why it matters</div><h2>Why should we recycle?</h2><p>Packaging protects products, but after we use it, it can become waste. Recycling gives materials another life and helps reduce the amount of rubbish sent to landfill.</p>
+ <div class="grid" style="margin-top:22px">
+  <div class="tile"><div class="emoji">🌳</div><h3>Save resources</h3><p>Reuse materials instead of using only new raw materials.</p></div>
+  <div class="tile"><div class="emoji">🏙️</div><h3>Less waste</h3><p>Keep more useful materials out of landfills.</p></div>
+  <div class="tile"><div class="emoji">⚡</div><h3>Save energy</h3><p>Recycling can use less energy than making some products from raw materials.</p></div>
+  <div class="tile"><div class="emoji">🌍</div><h3>Protect nature</h3><p>Reduce pollution and help protect ecosystems.</p></div>
+ </div></div><div class="footer"><span>WHY RECYCLING MATTERS</span><span>02 / 08</span></div>
+</section>
+<section class="slide">
+ <div class="content"><div class="kicker">02 — Materials</div><h2>What packaging can we recycle?</h2>
+ <div class="grid">
+  <div class="tile"><div class="emoji">🧴</div><h3>Plastic</h3><p>Some bottles, tubs and containers. Check the local recycling rules and plastic type.</p></div>
+  <div class="tile"><div class="emoji">📦</div><h3>Paper & cardboard</h3><p>Clean boxes, paper bags, newspapers and cereal boxes.</p></div>
+  <div class="tile"><div class="emoji">🫙</div><h3>Glass</h3><p>Glass bottles and jars. Empty and rinse them first.</p></div>
+  <div class="tile"><div class="emoji">🥫</div><h3>Metal</h3><p>Aluminium drink cans and steel food tins.</p></div>
+  <div class="tile" style="grid-column:1/-1"><div class="emoji">🧃</div><h3>Drink cartons</h3><p>Milk and juice cartons may be recyclable at special collection points because they contain several layers of material.</p></div>
+ </div></div><div class="footer"><span>RECYCLABLE PACKAGING</span><span>03 / 08</span></div>
+</section>
+<section class="slide">
+ <div class="content"><div class="kicker">03 — Sort it right</div><h2>How to prepare packaging</h2>
+ <div class="steps">
+  <div class="step"><b>1</b><div style="font-size:32px">🗑️</div><span>Empty the package</span></div>
+  <div class="step"><b>2</b><div style="font-size:32px">🚿</div><span>Rinse food or drink residue</span></div>
+  <div class="step"><b>3</b><div style="font-size:32px">📦</div><span>Flatten boxes and cartons</span></div>
+  <div class="step"><b>4</b><div style="font-size:32px">♻️</div><span>Sort by local rules</span></div>
+ </div>
+ <div class="callout">Important: recycling rules are different in different places. Always check what your local collection point accepts.</div>
+ </div><div class="footer"><span>FOUR SIMPLE STEPS</span><span>04 / 08</span></div>
+</section>
+<section class="slide">
+ <div class="content"><div class="kicker">04 — Not everything</div><h2>What may not be accepted?</h2>
+ <div class="split"><div><ul><li>Greasy or food-soiled cardboard</li><li>Some plastic bags and wrappers</li><li>Foam packaging</li><li>Multi-layer packets that local facilities cannot process</li></ul><p>These items may need special collection or may not be recyclable in your area.</p></div><div class="big-icon">🚫📦</div></div>
+ <div class="callout">Tip: when in doubt, look for your city's recycling guide instead of putting unknown items in the recycling bin.</div>
+ </div><div class="footer"><span>CHECK BEFORE YOU RECYCLE</span><span>05 / 08</span></div>
+</section>
+<section class="slide">
+ <div class="content"><div class="kicker">05 — Our school project</div><h2>Let's create an Eco-School!</h2>
+ <div class="split"><div><ul><li>Place clearly labelled recycling bins around school.</li><li>Collect clean paper, plastic bottles and cans accepted locally.</li><li>Create posters explaining sorting rules.</li><li>Run a friendly class recycling challenge.</li><li>Take collected materials to an official collection point.</li></ul></div><div class="big-icon">🏫♻️</div></div>
+ <div class="callout"><strong>Our goal:</strong> make recycling easy, clear and part of everyday school life.</div>
+ </div><div class="footer"><span>TAKE ACTION</span><span>06 / 08</span></div>
+</section>
+<section class="slide">
+ <div class="content"><div class="kicker">06 — Quick knowledge check</div><h2>Test yourself!</h2><p id="question">Which of these is usually accepted for recycling when clean and dry?</p>
+ <div id="options"></div><div id="feedback" aria-live="polite"></div><button id="nextQuestion" style="margin-top:15px;display:none">Next question →</button>
+ </div><div class="footer"><span>MINI QUIZ</span><span>07 / 08</span></div>
+</section>
+<section class="slide hero">
+ <div class="content"><div class="kicker">Final message</div><h1>Give waste<br>a new life.</h1><p>Recycle correctly, reuse what you can, and choose less packaging when possible. Every small action counts.</p><span class="pill">Thank you for listening!</span></div><div class="hero-art">🌱</div><div class="footer"><span>REDUCE · REUSE · RECYCLE</span><span>08 / 08</span></div>
+</section>
+</main>
+<div class="controls">
+ <button id="prev" aria-label="Previous slide">← Back</button><span class="counter" id="counter">1 / 8</span><button id="next" aria-label="Next slide">Next →</button>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')];let current=0;
+const counter=document.getElementById('counter'),progress=document.getElementById('progress');
+function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));counter.textContent=`${current+1} / ${slides.length}`;progress.style.width=((current+1)/slides.length*100)+'%';document.getElementById('prev').disabled=current===0;document.getElementById('next').disabled=current===slides.length-1}
+document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key===' ')show(current+1);if(e.key==='ArrowLeft')show(current-1)});
+const quiz=[
+ {q:'Which item is usually recyclable when clean and dry?',o:['Cardboard box','Food leftovers','Used tissue'],a:0,why:'Clean cardboard is commonly accepted in paper recycling.'},
+ {q:'What should you do before recycling a drink bottle?',o:['Leave liquid inside','Empty and rinse it','Fill it with water'],a:1,why:'Empty and rinse containers to remove leftover liquid or food.'},
+ {q:'Are all plastic packages recyclable everywhere?',o:['Yes, all of them','No, it depends on local facilities','Only colourful plastic'],a:1,why:'Accepted plastics vary by local recycling systems.'}
+];let qi=0,answered=false;
+function renderQuiz(){let q=quiz[qi];document.getElementById('question').textContent=q.q;document.getElementById('feedback').textContent='';document.getElementById('nextQuestion').style.display='none';answered=false;document.getElementById('options').innerHTML='';q.o.forEach((opt,i)=>{let b=document.createElement('button');b.className='quiz-option';b.textContent=opt;b.onclick=()=>{if(answered)return;answered=true;document.querySelectorAll('.quiz-option').forEach(x=>x.disabled=true);document.getElementById('feedback').textContent=(i===q.a?'Correct! ':'Not quite. ')+q.why;document.getElementById('nextQuestion').style.display='inline-block';document.getElementById('nextQuestion').textContent=qi===quiz.length-1?'Finish quiz':'Next question →'};document.getElementById('options').appendChild(b)})}
+document.getElementById('nextQuestion').onclick=()=>{if(qi<quiz.length-1){qi++;renderQuiz()}else{document.getElementById('question').textContent='Great job! You have completed the quiz.';document.getElementById('options').innerHTML='';document.getElementById('feedback').textContent='Remember: reduce, reuse and recycle!';document.getElementById('nextQuestion').style.display='none'}};
+renderQuiz();show(0);
+</script>
+</body></html>
